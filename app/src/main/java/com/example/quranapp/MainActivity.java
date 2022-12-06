@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         searchBtn = findViewById(R.id.btnSearch);
         validAyyat = findViewById(R.id.txtValid);
 
-        /*surahDropDown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        surahDropDown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 idOfSelectedSurah = i;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        });*/
+        });
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,18 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 validAyyat.setText("");
                 ayyatNo = String.valueOf(ayyatnumber.getText());
                 if (ayyatNo != ""){
-                    surahDropDown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            idOfSelectedSurah = i;
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> adapterView) {
-
-                        }
-                    });
-
 
                     surahStartingAyyat = q.SSP[idOfSelectedSurah];
                     nextSurahStartingAyyat = q.SSP[idOfSelectedSurah + 1];
