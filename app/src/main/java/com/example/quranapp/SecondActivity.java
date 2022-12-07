@@ -20,7 +20,7 @@ public class SecondActivity extends AppCompatActivity {
 
         ayyatno = getIntent().getStringExtra("ayyatNo");
         ayyatNo = Integer.parseInt(ayyatno);
-
+        System.out.println(ayyatNo);
         ayyat = q.QuranArabicText[ayyatNo];
 
         ayyatDisplay.setText(ayyat);

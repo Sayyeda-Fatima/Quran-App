@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         date = findViewById(R.id.txtDateTime);
         date.setText(currentDateTimeString);
 
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 idOfSelectedSurah = i;
-                System.out.println(idOfSelectedSurah);
+                System.out.println(i);
             }
 
             @Override
@@ -72,9 +73,17 @@ public class MainActivity extends AppCompatActivity {
                 if (ayyatNo != ""){
 
                     surahStartingAyyat = q.SSP[idOfSelectedSurah];
-                    nextSurahStartingAyyat = q.SSP[idOfSelectedSurah + 1];
+                    System.out.println(surahStartingAyyat);
+                    if(idOfSelectedSurah < 113) {
+                        nextSurahStartingAyyat = q.SSP[idOfSelectedSurah + 1];
+                    }
+                    else{
+                        nextSurahStartingAyyat = q.QuranArabicText.length + 1;
+                    }
+                    System.out.println(nextSurahStartingAyyat);
 
                     ayyatToBeDiaplayed = surahStartingAyyat + Integer.parseInt(ayyatnumber.getText().toString());
+                    System.out.println("final ayyat :" + ayyatToBeDiaplayed);
                     if(ayyatToBeDiaplayed< nextSurahStartingAyyat){
                         Intent i = new Intent(MainActivity.this, SecondActivity.class);
                         i.putExtra("ayyatNo", Integer.toString(ayyatToBeDiaplayed-1));
