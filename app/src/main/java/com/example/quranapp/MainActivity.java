@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     int idOfSelectedSurah;
     int ayyatToBeDiaplayed;
     TextView validAyyat;
-    String ayyatNo;
+    String ayyatNo = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         surahDropDown.setAdapter(adpt);
 
-        ayyatnumber = findViewById(R.id.txtAyyatInput);
+        ayyatnumber = (EditText) findViewById(R.id.txtAyyatInput);
         searchBtn = findViewById(R.id.btnSearch);
         validAyyat = findViewById(R.id.txtValid);
 
@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 idOfSelectedSurah = i;
-                System.out.println(i);
             }
 
             @Override
@@ -69,21 +68,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 validAyyat.setText("");
-                ayyatNo = String.valueOf(ayyatnumber.getText());
-                if (ayyatNo != ""){
+                if (ayyatnumber.getText().toString().trim().length() > 0){
 
                     surahStartingAyyat = q.SSP[idOfSelectedSurah];
-                    System.out.println(surahStartingAyyat);
                     if(idOfSelectedSurah < 113) {
                         nextSurahStartingAyyat = q.SSP[idOfSelectedSurah + 1];
                     }
                     else{
                         nextSurahStartingAyyat = q.QuranArabicText.length + 1;
                     }
-                    System.out.println(nextSurahStartingAyyat);
 
                     ayyatToBeDiaplayed = surahStartingAyyat + Integer.parseInt(ayyatnumber.getText().toString());
-                    System.out.println("final ayyat :" + ayyatToBeDiaplayed);
+
                     if(ayyatToBeDiaplayed< nextSurahStartingAyyat){
                         Intent i = new Intent(MainActivity.this, SecondActivity.class);
                         i.putExtra("ayyatNo", Integer.toString(ayyatToBeDiaplayed-1));
