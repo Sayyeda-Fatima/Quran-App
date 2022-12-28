@@ -56,6 +56,7 @@
         android:drawableStart="@drawable/ic_search"
         android:drawablePadding="8dp"
         android:elevation="6dp"
+        android:inputType="number"
         android:hint="Enter Ayyat Number"
         android:paddingStart="8dp"
         android:textColor="@color/black"
