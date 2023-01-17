@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     int idOfSelectedSurah;
     int ayyatToBeDiaplayed;
     TextView validAyyat;
-    String ayyatNo = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
