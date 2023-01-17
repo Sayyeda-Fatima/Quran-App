@@ -3,6 +3,7 @@ package com.example.quranapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     TextView date;
     EditText ayyatnumber;
     Button searchBtn;
+    Button repoButton;
     QuranData q = new QuranData();
     String [] surah;
     Integer surahStartingAyyat;
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         ayyatnumber = (EditText) findViewById(R.id.txtAyyatInput);
         searchBtn = findViewById(R.id.btnSearch);
+        repoButton = findViewById(R.id.btnRepo);
         validAyyat = findViewById(R.id.txtValid);
 
         surahDropDown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -91,6 +94,17 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     validAyyat.setText("Please give a valid ayyat number!");
                 }
+            }
+        });
+
+        String url = "https://github.com/Sayyeda-Fatima/Quran-App.git";
+
+        repoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri webpage = Uri.parse(url);
+                Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+                startActivity(intent);
             }
         });
     }
